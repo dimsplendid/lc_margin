@@ -17,6 +17,7 @@ django-autoslug==1.9.8  # https://github.com/justinmayer/django-autoslug/
 # Machine Learning
 # ------------------------------------------------------------------------------
 numpy==1.23.1
+openpyxl==3.0.10
 pandas==1.4.3
 tensorflow==2.9.1
 scikit-learn==1.1.1
