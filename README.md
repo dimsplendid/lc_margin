@@ -11,7 +11,7 @@ The simple tool for calculate LC margin
 
 
 ```bash
-conda create python=3.10 -n lc_margin
+conda create python=3.8 -n lc_margin
 ```
 2 - <a name="step-2">Activate the conda environment</a>
 
