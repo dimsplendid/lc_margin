@@ -1,4 +1,4 @@
-LCMargin
+LC Margin
 ==============================
 
 The simple tool for calculate LC margin
@@ -37,7 +37,7 @@ On Windows
 pip install -r requirements\local.txt
 ```
 
-4 - <a name="step-4">Configure the database connection string on the .env</a>
+<!-- 4 - <a name="step-4">Configure the database connection string on the .env</a>
 
 On Linux and Mac
 
@@ -74,7 +74,7 @@ On Windows:
 
 Since [there is no official support for PostgreSQL 12 on Windows 10](https://www.postgresql.org/download/windows/) (officially PostgreSQL 12 is only supported on Windows Server), we choose to use SQLite3 on Windows
 
-6 - <a name="step-6">Run the `migrations` to finish configuring the database to able to run the project</a>
+6 - <a name="step-6">Run the `migrations` to finish configuring the database to able to run the project</a> -->
 
 
 ```bash
@@ -91,7 +91,7 @@ coverage run -m pytest
 
 
 ## <a name="troubleshooting">Troubleshooting</a>
-
+<!-- 
 If for some reason you get an error similar to bellow, is because the DATABASE_URL is configured to `postgres:///lc_margin` and because of it the generated `DATABASES` settings are configured to connect on PostgreSQL using the socket mode.
 In that case, you must create the database manually because the `sqlcreate` is not capable to correctly generate the SQL query in this case.
 
@@ -133,4 +133,4 @@ dropdb --if-exists lc_margin
 dropuser --if-exists myuser
 ```
 
-
+ -->
