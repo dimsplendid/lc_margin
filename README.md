@@ -36,6 +36,14 @@ On Windows
 ```bash
 pip install -r requirements\local.txt
 ```
+4 - <a name="step-4">Modify allow IP at config/settings/local.py</a>
+
+```python
+...
+# add your IP at list
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
+...
+```
 
 <!-- 4 - <a name="step-4">Configure the database connection string on the .env</a>
 
