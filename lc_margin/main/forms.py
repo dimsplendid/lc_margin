@@ -1,6 +1,8 @@
 from django import forms
 from django.core.cache import cache
 
+import pandas as pd
+
 from .models import (
     Fab,
     Glass,
@@ -22,15 +24,20 @@ class CalculatorForm(forms.Form):
     )
     
     def calc(self):
-        print(self.cleaned_data['fab'])
-        print(self.cleaned_data['glass'])
-        print(self.cleaned_data['ps_model'])
-        print(self.cleaned_data['mps_type'])
-        print(self.cleaned_data['lc_type'])
-        print(self.cleaned_data['others'])
+        # print(self.cleaned_data['fab'])
+        # print(self.cleaned_data['glass'])
+        # print(self.cleaned_data['ps_model'])
+        # print(self.cleaned_data['mps_type'])
+        # print(self.cleaned_data['lc_type'])
+        # print(self.cleaned_data['others'])
         
         calculator = LCMarginCalculator(
-            fab=self.cleaned_data['fab']
+            self.cleaned_data['fab'],
+            self.cleaned_data['glass'],
+            self.cleaned_data['ps_model'],
+            self.cleaned_data['mps_type'],
+            self.cleaned_data['lc_type'],
+            pd.read_excel(self.cleaned_data['others']),
         )
         
         cache.set('result', calculator.predict[0])
