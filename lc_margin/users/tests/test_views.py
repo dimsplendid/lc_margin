@@ -3,6 +3,7 @@ from django.test import RequestFactory
 from django.contrib.messages.middleware import MessageMiddleware
 from django.contrib.sessions.middleware import SessionMiddleware
 from django.urls import reverse
+from django.http import HttpRequest
 
 from lc_margin.users.models import User
 from lc_margin.users.views import (
@@ -21,6 +22,8 @@ class TestUserUpdateView:
         fixture db access -- this is a work-in-progress for now:
         https://github.com/pytest-dev/pytest-django/pull/258
     """
+    def dummy_get_response(self, request: HttpRequest):
+        return None
 
     def test_get_success_url(
         self, user: User, request_factory: RequestFactory
@@ -52,9 +55,9 @@ class TestUserUpdateView:
             reverse("users:update"), form_data
         )
         request.user = user
-        session_middleware = SessionMiddleware()
+        session_middleware = SessionMiddleware(self.dummy_get_response)
         session_middleware.process_request(request)
-        msg_middleware = MessageMiddleware()
+        msg_middleware = MessageMiddleware(self.dummy_get_response)
         msg_middleware.process_request(request)
 
         response = UserUpdateView.as_view()(request)

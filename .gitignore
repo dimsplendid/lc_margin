@@ -328,3 +328,5 @@ lc_margin/media/
 *.sqlite
 *.sqlite3
 
+# ignore testing notebooks
+notebooks/

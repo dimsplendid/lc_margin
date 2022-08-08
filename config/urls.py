@@ -4,11 +4,19 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
+    # path(
+    #     "",
+    #     TemplateView.as_view(template_name="pages/home.html"),
+    #     name="home",
+    # ),
+    
+    # Redirect to calculate pages
     path(
         "",
-        TemplateView.as_view(template_name="pages/home.html"),
+        RedirectView.as_view(pattern_name='main:calculator'),
         name="home",
     ),
     path(
@@ -25,6 +33,10 @@ urlpatterns = [
     ),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
+    path(
+        "main/", 
+        include("main.urls", namespace="main")
+    )
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
