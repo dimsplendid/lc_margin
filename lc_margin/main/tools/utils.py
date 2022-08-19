@@ -134,7 +134,7 @@ class LCMarginCalculator:
             axis=0,
         ) / 2.54 / 10
         
-        self.front = df.loc[:1].astype('float').to_numpy()
+        self.front = df[:1].astype('float').to_numpy()
         self.mid = np.array(
             [
                 self.fab 
@@ -147,18 +147,17 @@ class LCMarginCalculator:
         end_df = pd.DataFrame({
             "MPS_Volume": np.pi/12 * others['PSH'] * 
             (others['MPS Top']**2 + others['MPS Top']*others['MPS Bottom'] + others['MPS Bottom']**2),
-            "SPS_Volume": np.pi / 4 
-            * 
-            (
+            "SPS_Volume": np.pi/4 * (
                 others['SPS TopX'] * others['SPS TopY']
-                * (others['PSH'] - 0.45) / 6
-                *   
-                (
-                    2 * others['SPS BottomX'] * others['SPS BottomY'] 
-                    + others['SPS TopX'] * others['SPS BottomY']
-                    + others['SPS BottomX'] * others['SPS TopY']
-                    - 4 * others['SPS TopX'] * others['SPS TopY']
-                )
+                * (others['PSH']-0.45)
+                + (others['PSH']-0.45)/6 
+                * (
+                    2*others['SPS BottomX']
+                    *others['SPS BottomY']
+                    +others['SPS TopX']*others['SPS BottomY']
+                    +others['SPS TopY']*others['SPS BottomX']
+                    -4*others['SPS TopX']*others['SPS TopY']
+                    )
             ),
         })
 
