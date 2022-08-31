@@ -174,7 +174,8 @@ class LCMarginCalculator:
             * others['CF Glass width'] * others['CF Glass length'] * 9.8 * 2.44,
         )
         self.end = end_df.astype('float').to_numpy()
-                
+        self.psh = float(df['PSH'][0])
+        
         self.__data = None
         
     @property
@@ -199,3 +200,8 @@ class LCMarginCalculator:
     @data.setter
     def data(self, value):
         self.__data = value
+        
+    @property
+    def lc_margin(self):
+        # print(self.psh)
+        return self.predict[0] * self.psh * 100

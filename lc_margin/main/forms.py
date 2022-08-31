@@ -41,3 +41,4 @@ class CalculatorForm(forms.Form):
         )
         
         cache.set('result', calculator.predict[0])
+        cache.set('lc_margin', calculator.lc_margin)
