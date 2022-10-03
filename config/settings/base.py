@@ -159,6 +159,7 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
+TEMPLATES_DIRS = APPS_DIR / "static" / "templates"
 
 # MEDIA
 # ------------------------------------------------------------------------------

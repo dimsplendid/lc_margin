@@ -7,7 +7,7 @@
 <h1>{{title}}</h1>
 {% if download_path %}
 <a href="{{download_path}}" class="btn btn-primary">
-    Template Download
+    Sample Download
 </a>
 {% endif %}
 <form method="post" action="." enctype="multipart/form-data">
@@ -18,6 +18,8 @@
 {% if result %}
 <hr/>
 <h2>Result</h2>
-<p>{{result}}</p>
+<p>允壓量範圍(um)：{{result|floatformat:-7}}</p>
+<p>LC Margin: {{lc_margin|floatformat:-2}} %</p>
+
 {% endif %}
 {% endblock content %}
