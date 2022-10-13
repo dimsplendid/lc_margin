@@ -330,3 +330,6 @@ lc_margin/media/
 
 # ignore testing notebooks
 notebooks/
+
+# ignore office files
+.~lock.*
