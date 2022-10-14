@@ -10,7 +10,7 @@ from .models import (
     MPSType,
     LCType,
 )
-from .tools.utils import LCMarginCalculator
+from .tools.utils import LCMarginCalculator, liquid_crystal_margin_calculator
 
 class CalculatorForm(forms.Form):
     fab = forms.ChoiceField(choices=Fab.choices)
@@ -42,3 +42,13 @@ class CalculatorForm(forms.Form):
         
         cache.set('result', calculator.predict[0])
         cache.set('lc_margin', calculator.lc_margin)
+        
+class BatchCalculatorForm(forms.Form):
+    input_file = forms.FileField(
+        help_text='Excel file(.xlsx)',
+        widget=forms.FileInput(attrs={'accept': '.xlsx'})
+    )
+    
+    def calc(self):
+        input_data = pd.read_excel(self.cleaned_data['input_file'])
+        cache.set('result', liquid_crystal_margin_calculator(input_data))

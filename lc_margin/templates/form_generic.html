@@ -20,6 +20,21 @@
 <h2>Result</h2>
 <p>允壓量範圍(um)：{{result|floatformat:-7}}</p>
 <p>LC Margin: {{lc_margin|floatformat:-2}} %</p>
-
+{% endif %}
+{% if result_T1 %}
+<div>
+    <h3>Table 1: T1 Result</h3>
+    {{ result_T1|safe }}
+</div>
+{% endif %}
+{% if result_T2 %}
+<div>
+    <h3>Table 2: T2 Result</h3>
+    {{ result_T2|safe }}
+</div>
+{% endif %}
+{% if result_download %}
+<a href="{% url 'main:result_download' %}" class="btn btn-primary">
+    Result Download
 {% endif %}
 {% endblock content %}
