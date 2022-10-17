@@ -400,6 +400,6 @@ def liquid_crystal_margin_calculator(
         input_df = pd.concat([df_front, df_mid, df_end], axis=1)
         df['Density'] = input_df['1st Density']
         df['允壓量範圍(um)'] = model.predict(input_df)
-        df['LC Margin'] = df['允壓量範圍(um)'] * df['PSH'] * 100
+        df['LC Margin'] = df['允壓量範圍(um)'] / df['cell gap'] * 100
         # input_df.to_excel('input.xlsx')
     return result
