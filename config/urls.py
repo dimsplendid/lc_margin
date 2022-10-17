@@ -16,7 +16,7 @@ urlpatterns = [
     # Redirect to calculate pages
     path(
         "",
-        RedirectView.as_view(pattern_name='main:calculator'),
+        RedirectView.as_view(pattern_name='main:batch_calculator'),
         name="home",
     ),
     path(
